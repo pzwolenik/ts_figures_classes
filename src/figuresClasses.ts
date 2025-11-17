@@ -7,25 +7,12 @@ export interface Figure {
 export class Triangle implements Figure {
   shape = 'triangle';
 
-  a: number;
-
-  b: number;
-
-  c: number;
-
-  color: 'red' | 'green' | 'blue';
-
   constructor(
-    color: 'red' | 'green' | 'blue',
-    a: number,
-    b: number,
-    c: number,
+    public color: 'red' | 'green' | 'blue',
+    public a: number,
+    public b: number,
+    public c: number,
   ) {
-    this.color = color;
-    this.a = a;
-    this.b = b;
-    this.c = c;
-
     if (this.a <= 0 || this.b <= 0 || this.c <= 0) {
       throw new Error('Sides length cannot be below 0!');
     }
@@ -35,7 +22,7 @@ export class Triangle implements Figure {
       this.a + this.b + this.c - Math.max(this.a, this.b, this.c)
     ) {
       throw new Error(
-        'the longest side of a triangle must be >= than a sum of two others',
+        'The longest side must be shorter than the sum of the other two sides.',
       );
     }
   }
@@ -54,14 +41,10 @@ export class Triangle implements Figure {
 export class Circle implements Figure {
   shape = 'circle';
 
-  radius: number;
-
-  color: 'red' | 'green' | 'blue';
-
-  constructor(color: 'red' | 'green' | 'blue', radius: number) {
-    this.radius = radius;
-    this.color = color;
-
+  constructor(
+    public color: 'red' | 'green' | 'blue',
+    public radius: number,
+  ) {
     if (this.radius <= 0) {
       throw new Error('Radius cannot be below 0!');
     }
@@ -75,17 +58,11 @@ export class Circle implements Figure {
 export class Rectangle implements Figure {
   shape = 'rectangle';
 
-  width: number;
-
-  height: number;
-
-  color: 'red' | 'green' | 'blue';
-
-  constructor(color: 'red' | 'green' | 'blue', width: number, height: number) {
-    this.width = width;
-    this.height = height;
-    this.color = color;
-
+  constructor(
+    public color: 'red' | 'green' | 'blue',
+    public width: number,
+    public height: number,
+  ) {
     if (this.width <= 0 || this.height <= 0) {
       throw new Error('Sides length cannot be below 0!');
     }
